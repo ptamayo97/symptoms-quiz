@@ -1,32 +1,30 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import { ListGroup, ListGroupItem, Button } from "reactstrap";
+import FadeIn from "react-fade-in";
 
 const Result = props => {
-  const { diagnosis, result } = props;
-  if (diagnosis === "corona") {
-    return (
-      <div>
+  const { result } = props;
+  return (
+    <Fragment>
+      <FadeIn>
         <h1>{result.affliction}</h1>
-      </div>
-    );
-  } else if (diagnosis === "flu") {
-    return (
-      <div>
-        <h1>{result.affliction}</h1>
-      </div>
-    );
-  } else if (diagnosis === "allergies") {
-    return (
-      <div>
-        <h1>{result.affliction}</h1>
-      </div>
-    );
-  } else if (diagnosis === "cold") {
-    return (
-      <div>
-        <h1>{result.affliction}</h1>
-      </div>
-    );
-  }
+        <h3>Other Symptoms:</h3>
+        <ListGroup>
+          {result.symptoms.map((item, idx) => (
+            <ListGroupItem key={idx}>{item}</ListGroupItem>
+          ))}
+        </ListGroup>
+        <h5>
+          These are COMMON SYMPTOMS, which may vary from person to person. Only
+          a doctor can give you a diagnosis.
+        </h5>
+        <Link to="/">
+          <Button color="secondary">Restart</Button>
+        </Link>
+      </FadeIn>
+    </Fragment>
+  );
 };
 
 export default Result;

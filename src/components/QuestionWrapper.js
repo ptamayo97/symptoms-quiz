@@ -1,6 +1,6 @@
 import React from "react";
 import Question from "./Question";
-import Result from "./Result";
+import Result from "./ResultWrapper";
 
 const QuestionWrapper = props => {
   const { handleAnswer, quiz } = props;
